@@ -1,0 +1,17 @@
+{
+  "name": "startit-movie-finder",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Test Cases for 'https://www.pgatour.com/'. December 2017",
+  "scripts": {
+    "postinstall": "webdriver-manager update",
+    "test": "protractor"
+  },
+  "dependencies": {
+    "protractor": "^5.1.1",
+    "jasmine2-reporter": "^0.3.0"
+  },
+  "devDependencies": {
+    "protractor-jasmine2-html-reporter": "0.0.7"
+  }
+}
