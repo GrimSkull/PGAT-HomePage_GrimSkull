@@ -1,5 +1,5 @@
 module.exports.config = {
-    specs: ['test-cases/*'],
+    specs: ['specs/*.js'],
     directConnect: true,
     baseUrl: 'https://www.pgatour.com/',
 
@@ -9,13 +9,23 @@ module.exports.config = {
 
         browser.waitForAngularEnabled(false);
 
-        beforeEach( () => {
-        //Here will be preconditions, like a launching browser before each test case starts
-            browser.get('')        
+        beforeAll( () => {
+            let request = require('request');
+            request('https://www.pgatour.com/etc/tags/PGATOUR/Players/00/87/93.json', (error, response, body) => {
+              if (!error && response.statusCode == 200) {
+                 global.importedJSON = JSON.parse(body);
+                 console.log(importedJSON);
+              }
+            })        
         })
 
+        // beforeEach( () => {
+        // //Here will be preconditions, like a launching browser before each test case starts
+        //     browser.get('')        
+        // })
+
         afterEach( () => {
-            browser.get('/')
+            // browser.get('/')
             browser.executeScript('window.sessionStorage.clear();')
             browser.executeScript('window.localStorage.clear();')
             browser.manage().deleteAllCookies()
