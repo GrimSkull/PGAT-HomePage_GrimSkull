@@ -1,5 +1,5 @@
 module.exports.config = {
-    specs: ['spec.js'],
+    specs: ['test-cases/*'],
     directConnect: true,
     baseUrl: 'https://www.pgatour.com/',
 

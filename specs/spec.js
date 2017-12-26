@@ -6,7 +6,7 @@ describe('Search Field Tests', ()=> {
     
     xit('First Result by Player Name', ()=> {
         
-        element(by.css('.icon-search')).click()
+        $('.icon-search').click()
         browser.wait(EC.visibilityOf($('.search-dropdown')), 3000, "Dropdown search should be present after clicking on search button")
         // browser.sleep(3000)
         
@@ -17,6 +17,19 @@ describe('Search Field Tests', ()=> {
         expect($$('.ez-ac-inner-text').first().$('div a').getText().then(text => text.toLowerCase())).toContain(playerName, 'First search result should contain search string')
     })
 
+    xit('Displaing Player Photo', ()=> {
+        
+        $('.icon-search').click()
+        browser.wait(EC.visibilityOf($('.search-dropdown')), 3000, "Dropdown search should be present after clicking on search button")
+        
+        searchField.sendKeys(playerName)
+        
+        browser.wait(EC.visibilityOf($('.shows_item')), 5000, "Dropdown search should be present after clicking on search button")
+        searchResults = $('.ez-ac-image[src*="08793.png"]')        
+
+        expect(searchResults.isDisplayed(), 'Player Photo is not displayed')
+    })
+
     it('Displaing Player Photo', ()=> {
         
         element(by.css('.icon-search')).click()
@@ -25,7 +38,7 @@ describe('Search Field Tests', ()=> {
         searchField.sendKeys(playerName)
         
         browser.wait(EC.visibilityOf($('.shows_item')), 5000, "Dropdown search should be present after clicking on search button")
-        searchResults = element(by.css('.ez-ac-image[src~="08793.png"]'))        
+        searchResults = $('.ez-ac-image[src*="08793.png"]')        
 
         expect(searchResults.isDisplayed(), 'Player Photo is not displayed')
     })
