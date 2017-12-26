@@ -24,8 +24,9 @@ describe('Search Field Tests', ()=> {
         
         searchField.sendKeys(playerName)
         
-        searchResults = element($$('.ez-ac-image-crop').first().$('div img')).getAttribute('src').then(photh => photo.toMatch('$08793.png')).isDisplayed()
-       
-        expect(searchResults.toBe(), 'Player Photo does not displayed')
+        browser.wait(EC.visibilityOf($('.shows_item')), 5000, "Dropdown search should be present after clicking on search button")
+        searchResults = element(by.css('.ez-ac-image[src~="08793.png"]'))        
+
+        expect(searchResults.isDisplayed(), 'Player Photo is not displayed')
     })
 })
