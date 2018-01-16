@@ -16,9 +16,9 @@ module.exports.config = {
         return new Promise(function (resolve) {
             request('https://www.pgatour.com/etc/tags/PGATOUR/Players/00/87/93.json', (error, response, body) => {
                 if (!error && response.statusCode == 200) {
-                    global.importedJSON = JSON.parse(body);
+                    global.importedPlayerTag = JSON.parse(body);
 
-                    resolve(global.importedJSON);
+                    resolve(global.importedPlayerTag);
                 }
             })
         });
