@@ -1,4 +1,4 @@
-describe('Player Page Tests', ()=> {
+describe('Player Page Tests', () => {
 
     // let searchField = $('[placeholder="Enter search keywords"]')
     let playerFullName = global.importedPlayerTag.playerFullName;

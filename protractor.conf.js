@@ -39,4 +39,8 @@ module.exports.config = {
         });
     }
 
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 05592d081f4b536a6ae05c2b771c9a81d2d6f15b
