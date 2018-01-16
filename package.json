@@ -1,8 +1,8 @@
 {
-  "name": "startit-movie-finder",
+  "name": "PGAT Test Simples",
   "version": "0.0.1",
   "private": true,
-  "description": "Test Cases for 'https://www.pgatour.com/'. December 2017",
+  "description": "Test Cases for 'https://www.pgatour.com/'. January 2018",
   "scripts": {
     "postinstall": "webdriver-manager update",
     "test": "protractor"

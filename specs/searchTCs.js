@@ -4,7 +4,7 @@ describe('Search Field Tests', ()=> {
     let playerName = 'tiger'
     let searchResults = ''
     
-    xit('First Result by Player Name', ()=> {
+    it('First Result by Player Name', ()=> {
         browser.get('')
         
         $('.icon-search').click()
