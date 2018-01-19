@@ -1,15 +1,16 @@
 {
-  "name": "startit-movie-finder",
+  "name": "PGAT-test-simples",
   "version": "0.0.1",
   "private": true,
-  "description": "Test Cases for 'https://www.pgatour.com/'. December 2017",
+  "description": "Test Cases for 'https://www.pgatour.com/'. January 2018",
   "scripts": {
     "postinstall": "webdriver-manager update",
     "test": "protractor"
   },
   "dependencies": {
+    "jasmine2-reporter": "^0.3.0",
     "protractor": "^5.1.1",
-    "jasmine2-reporter": "^0.3.0"
+    "request": "^2.83.0"
   },
   "devDependencies": {
     "protractor-jasmine2-html-reporter": "0.0.7"
