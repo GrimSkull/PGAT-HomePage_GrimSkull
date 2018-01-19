@@ -1,38 +1,29 @@
-describe('Search Field Tests', ()=> {
+describe('Search Field Tests', () => {
 
-    let searchField = $('[placeholder="Enter search keywords"]')
-    let playerName = 'tiger'
-    let searchResults = ''
+    let searchField = $('[placeholder="Enter search keywords"]');
+    let playerName = 'tiger';
     
-    it('First Result by Player Name', ()=> {
-        browser.get('')
+    beforeEach(() => {
+        // Here will be preconditions, they are same for all tests in this spec / suite
+        let iconSearch = $('.icon-search');
+        browser.get('');
         
-        $('.icon-search').click()
-        browser.sleep(3000)
+        browser.wait(EC.visibilityOf(iconSearch), 5000, "Search icon is not visible");
+        iconSearch.click();
 
-        browser.wait(EC.visibilityOf($('.search-dropdown')), 2000, "Dropdown search should be present after clicking on search button")
-        // browser.sleep(3000)
-        
-        searchField.sendKeys(playerName)
-        browser.wait(EC.visibilityOf($('.shows_item')), 2000, "Search results should be displayed after search query inputted")
-        // searchResults = $$('.ez-ac-inner-text').first().$('div a').getText().then(text => text.toLowerCase())
-       
-        expect($$('.ez-ac-inner-text').first().$('div a').getText().then(text => text.toLowerCase())).toContain(playerName, 'First search result should contain search string')
+        browser.wait(EC.visibilityOf($('.search-dropdown')), 4000, "Dropdown search should be present after clicking on search button");
+        searchField.sendKeys(playerName);
+    
+        browser.wait(EC.visibilityOf($('.shows_item .ez-ac-image')), 2000, "Search results should be displayed after search query inputted");
+    });
+    
+    xit('First Result by Player Name', ()=> {               
+        expect($('.ez-ac-inner-text > [title="tiger woods"]').getText().then(text => text.toLowerCase())).toContain(playerName, 'First search result should contain search string');
     })
 
-    xit('Displaing Player Photo', ()=> {
-        browser.get('')
-        
-        $('.icon-search').click()
-        browser.sleep(2500)
+    it('Displaing Player Photo', ()=> {        
+        let searchResults = $('.ez-ac-image[src*="08793.png"]');
 
-        browser.wait(EC.visibilityOf($('.search-dropdown')), 4000, "Dropdown search should be present after clicking on search button")
-        
-        searchField.sendKeys(playerName)
-        
-        browser.wait(EC.visibilityOf($('.shows_item')), 2000, "Search results should be displayed after search query inputted")
-        searchResults = $('.ez-ac-image[src*="08793.png"]')        
-
-        expect(searchResults.isDisplayed(), 'Player Photo is not displayed')
+        expect(searchResults.isDisplayed(), 'Player Photo is not displayed');
     })
 })

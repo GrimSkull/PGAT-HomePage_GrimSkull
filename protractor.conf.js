@@ -26,10 +26,17 @@ module.exports.config = {
         // beforeAll(() => {
         // });
 
-        // beforeEach(() => {
-        // //Here will be preconditions, like a launching browser before each test case starts
-        //     browser.get('');
-        // })
+        beforeEach(() => {
+            // Here will be preconditions, like a launching browser before each test case starts
+            let buttonClosePopup = $('#interstitialAdOverlayCloseButton');
+
+            // Wait for footer at the bottom of the page to be loaded
+            browser.wait(EC.visibilityOf($('.connect-with.footer-social')), 4000, "Footer was not loaded properly");
+
+            if (buttonClosePopup.isDisplayed()) {
+                return buttonClosePopup.click();
+            }
+        })
 
         afterEach(() => {
             // browser.get('/');
@@ -38,5 +45,4 @@ module.exports.config = {
             browser.manage().deleteAllCookies();
         });
     }
-
 };
